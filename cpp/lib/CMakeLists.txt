@@ -1,8 +1,8 @@
 add_library(algo SHARED
-    algos.cxx
+    src/algos.cxx
 )
 
 target_include_directories(algo
     PUBLIC
-    "${PROJECT_SOURCE_DIR}/src/include"
+    "${PROJECT_SOURCE_DIR}/lib/include"
 )
