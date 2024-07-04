@@ -23,7 +23,7 @@ namespace math
         DisplacementField run(const Coordinates& coordinates) override;
 
     private:
-        Name name_;
+        Name name_{"undefined"};
     };
 
     // --------------------------------------------

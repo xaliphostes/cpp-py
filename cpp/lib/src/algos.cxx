@@ -3,14 +3,13 @@
 
 namespace math
 {
+    
     Algo::Algo()
     {
-        name_ = "undefined";
     }
 
-    Algo::Algo(const Name &name)
+    Algo::Algo(const Name &name): name_(name)
     {
-        name_ = name;
     }
 
     Algo::~Algo()
@@ -19,16 +18,17 @@ namespace math
 
     DisplacementField Algo::run(const Coordinates &coordinates)
     {
-        auto fct = [](double value) { return 2 * value; };
+        Coordinates values = coordinates; // copy
 
-        Coordinates values = coordinates;
+        auto fct = [](double value) { return 2 * value; }; // lambda function
 
-        // std::transform(coordinates.begin(), coordinates.end(), values.begin(), fct);
+        std::transform(coordinates.begin(), coordinates.end(), values.begin(), fct);
 
-        for (uint32_t i = 0; i < coordinates.size(); ++i)
-        {
-            values[i] *= 2;
-        }
+        // same as
+        // for (uint32_t i = 0; i < coordinates.size(); ++i)
+        // {
+        //     values[i] *= 2;
+        // }
 
         return values;
     }
