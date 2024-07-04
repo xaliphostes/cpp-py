@@ -1,4 +1,5 @@
 ## Installation (only one time)
+In this `py` directory, type
 ```
 yarn install
 ```

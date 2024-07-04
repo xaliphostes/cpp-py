@@ -17,7 +17,13 @@ namespace math
     class Algo : public AlgoBase
     {
     public:
+        Algo();
+        Algo(const Name& name);
+        ~Algo();
         DisplacementField run(const Coordinates& coordinates) override;
+
+    private:
+        Name name_;
     };
 
     // --------------------------------------------

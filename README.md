@@ -30,6 +30,12 @@ python3 test.py
 
 <br><br><br>
 
-## Dependencies (macos)
+## To look at the dependencies (macos)
 In the bin directory, type
-`otool -L app `
+```sh
+otool -L app
+```
+or
+```sh
+otool -L pyalgo.so
+```
