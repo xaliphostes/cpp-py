@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.4...3.18)
 project(pyalgo)
 
-include_directories(../cpp/src/include/)
+include_directories(../cpp/lib/include/)
 
 find_library(ALGO algo PATHS ../bin/ REQUIRED)
 

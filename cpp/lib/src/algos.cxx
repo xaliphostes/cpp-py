@@ -1,14 +1,14 @@
-#include "algos.h"
+#include <CppLib/algos.h>
 #include <algorithm>
 
 namespace math
 {
-    
+
     Algo::Algo()
     {
     }
 
-    Algo::Algo(const Name &name): name_(name)
+    Algo::Algo(const Name &name) : name_(name)
     {
     }
 
@@ -20,7 +20,8 @@ namespace math
     {
         Coordinates values = coordinates; // copy
 
-        auto fct = [](double value) { return 2 * value; }; // lambda function
+        auto fct = [](double value)
+        { return 2 * value; }; // lambda function
 
         std::transform(coordinates.begin(), coordinates.end(), values.begin(), fct);
 

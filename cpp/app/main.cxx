@@ -1,5 +1,5 @@
 #include <iostream>
-#include "algos.h"
+#include <CppLib/algos.h>
 
 int main() {
     std::cerr << "Start..." << std::endl ;
