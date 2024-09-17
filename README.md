@@ -1,41 +1,36 @@
 # Initiation au C++ et au binding python
 
-## Compilation
+## Compilation and testing
 
 ### 1) C++
-1. Go to the `cpp` folder
-2. Create a `build` directory
-3. Go inside and type
-```sh
-cmake ..
-make
-```
 
-To test the C++ code, go to the bin directory (`../bin`), and type
-```sh
-./app
-```
+Read the [**README**](./cpp/README.md) file in the `cpp` folder
+
 
 ### 2) Python binding
-Go to the `py` folder and type
-```sh
-yarn install
-yarn build
-```
 
-To test the binding, go to the bin directory (`../bin`), and type
-```sh
-python3 test.py
-```
+Read the [**README**](./py/README.md) file in the `py` folder
+
+### 3) Other useful info
+
+- [Packaging](https://pybind11.readthedocs.io/en/stable/compiling.html#modules-with-cmake) with CMake
 
 <br><br><br>
 
-## To look at the dependencies (macos)
-In the bin directory, type
+## To look at the dependencies
+Go the bin directory
+
+**Macos**
 ```sh
-otool -L app
+otool -L pyalgo.so # or app
 ```
-or
+
+**Linux**
 ```sh
-otool -L pyalgo.so
+ldd pyalgo.so # or app
+```
+
+**Win**
+```sh
+dumpbin /dependents pyalgo.dll # or app.exe
 ```
