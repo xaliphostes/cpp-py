@@ -1,5 +1,6 @@
 add_library(algo SHARED
-    src/algos.cxx
+    src/point.cxx
+    src/triangle.cxx
 )
 
 target_include_directories(algo

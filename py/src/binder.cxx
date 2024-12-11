@@ -4,7 +4,8 @@
 
 PYBIND11_MODULE(pyalgo, m)
 {
-    pybind11::class_<math::Algo>(m, "Algo")
+    pybind11::class_<math::GreenFunction>(m, "GreenFunction")
         .def(pybind11::init<>()) // ctor
-        .def("run", &math::Algo::run);
+        .def(pybind11::init<const Vec3&, const Vec3&>()) // ctor
+        .def("run", &math::GreenFunction::run);
 }
