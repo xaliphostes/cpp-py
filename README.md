@@ -1,4 +1,7 @@
-# Initiation au C++ et au binding python
+# Initiation to C++ and python binding
+
+<center><img src="media/image.png" alt="drawing" width="300"/></center>
+<center><i>Display of Szz around a point source</i></center>
 
 ## Compilation and testing
 
@@ -17,7 +20,7 @@ Read the [**README**](./py/README.md) file in the `py` folder
 
 <br><br><br>
 
-## To look at the dependencies
+## To look at the dependencies of libs and bins
 Go the bin directory
 
 **Macos**

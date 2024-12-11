@@ -40,7 +40,7 @@ struct Triangle {
 class TriangleSource : public Source {
   public:
     TriangleSource(const Point3D &p1, const Point3D &p2, const Point3D &p3,
-                   const Vec3 &burgers, double shear, double poisson,
+                   const Vec3 &burgers, double shear = 1, double poisson = 0.25,
                    uint8_t n_gauss = 8);
 
     StressField run(const Coordinates &coordinates) const override;

@@ -2,7 +2,8 @@
 #include <algorithm>
 #include <iostream>
 
-PointSource::PointSource(const Vec3 &pos, const Vec3 &U) : pos_(pos), U_(U) {}
+PointSource::PointSource(const Vec3 &pos, const Vec3 &U, double mu, double nu)
+    : pos_(pos), U_(U), mu_(mu), nu_(nu) {}
 
 StressField PointSource::run(const Coordinates &coords) const {
     Vec3 pos;
@@ -42,11 +43,11 @@ Stress PointSource::stress(const Vec3 &at) const {
     const double r5 = r3 * r2;
 
     // Compute common factors
-    double a = 2.0 * mu;
+    double a = 2.0 * mu_;
     // Lamé's first parameter
-    const double lambda = a * nu / (1.0 - 2.0 * nu);
-    const double c1 = mu / (4.0 * M_PI * (1.0 - nu));
-    const double c2 = 3.0 - 4.0 * nu;
+    const double lambda = a * nu_ / (1.0 - 2.0 * nu_);
+    const double c1 = mu_ / (4.0 * M_PI * (1.0 - nu_));
+    const double c2 = 3.0 - 4.0 * nu_;
 
     // Unit vector components of relative position
     const double nx = dx / r;
@@ -83,10 +84,10 @@ Stress PointSource::stress(const Vec3 &at) const {
     double b = lambda * (dux_dx + duy_dy + duz_dz);
     Stress stress;
     stress[0] = a * dux_dx + b;         // σxx
-    stress[1] = mu * (dux_dy + duy_dx); // σxy
-    stress[2] = mu * (dux_dz + duz_dx); // σxz
+    stress[1] = mu_ * (dux_dy + duy_dx); // σxy
+    stress[2] = mu_ * (dux_dz + duz_dx); // σxz
     stress[3] = a * duy_dy + b;         // σyy
-    stress[4] = mu * (duy_dz + duz_dy); // σyz
+    stress[4] = mu_ * (duy_dz + duz_dy); // σyz
     stress[5] = a * duz_dz + b;         // σzz
 
     return stress;

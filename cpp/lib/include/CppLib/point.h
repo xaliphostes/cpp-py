@@ -23,9 +23,10 @@
  * - Problems involving prescribed boundary displacements
  * - Material inclusion problems
  */
-class PointSource: public Source {
+class PointSource : public Source {
   public:
-    PointSource(const Vec3 &pos = {0, 0, 0}, const Vec3 &U = {1, 0, 0});
+    PointSource(const Vec3 &pos = {0, 0, 0}, const Vec3 &U = {1, 0, 0},
+                double shear = 1, double poisson = 0.25);
 
     StressField run(const Coordinates &coordinates) const override;
     Stress stress(const Vec3 &pos) const;
@@ -33,6 +34,6 @@ class PointSource: public Source {
   private:
     Vec3 pos_{0, 0, 0}; // Source position
     Vec3 U_{1, 0, 0};   // displ. discon.
-    double nu{0.25};    // poisson's ratio
-    double mu{1};       // shear modulus
+    double nu_{0.25};   // poisson's ratio
+    double mu_{1};      // shear modulus
 };
