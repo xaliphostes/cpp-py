@@ -1,51 +1,99 @@
-[[Go back]](../README.md)
+# Python Setup Guide
 
-## Installation (only one time)
-In this `py` directory, type
+This guide explains how to use the new Python-based setup process for the pyalgo project.
+
+## Prerequisites
+
+- Python 3.6 or higher
+- Git
+- CMake
+
+## Usage
+
+The `setup.py` script replaces the previous npm/yarn-based workflow. Make sure the script is executable:
+
+```bash
+chmod +x setup.py
 ```
-yarn install
-```
 
-## Setup (each time you go there)
-```
-yarn setup
-```
+### Available Commands
 
-## Compile (as many time as necessary)
-```sh
-yarn build
-```
+The script provides several commands:
 
-## Testing the generated code
+1. **Install dependencies** (replaces `install.sh`):
+   ```bash
+   ./setup.py install
+   ```
+   This will clone the pybind11 repository if it doesn't exist.
 
-Go to the `/cpp-py/bin` folder and type
+2. **Setup virtual environment** (replaces `yarn setup`):
+   ```bash
+   ./setup.py setup
+   ```
+   This will create a Python virtual environment. After running this command, you'll need to activate the environment separately:
+   
+   - On Linux/macOS:
+     ```bash
+     source project_env/bin/activate
+     ```
+   - On Windows:
+     ```bash
+     project_env\Scripts\activate
+     ```
 
-```sh
+3. **Build the library** (replaces `yarn build`):
+   ```bash
+   ./setup.py build
+   ```
+   This will create the build directory, run CMake, build pyalgo, and move the resulting .so file to the bin directory.
+
+4. **Do everything at once**:
+   ```bash
+   ./setup.py all
+   ```
+   This will run all the steps above in sequence.
+
+## Testing the Generated Code
+
+After building, you can test the library:
+
+```bash
+cd ../bin
 python3 test.py
 ```
 
 ## Packaging
 
-### Creating the wheel
-```sh
-pip3 wheel .
+You can create and install the wheel package all at once with:
+
+```bash
+./setup.py package
 ```
 
-### Installing the wheel
-```sh
-pip3 install THE-GENERATED-WHEEL-NAME.whl --force-reinstall
-```
+This will:
+1. Create a wheel package (.whl file)
+2. Install the wheel package into your current Python environment
 
 ### Testing the installation
-If your are still in the `py` folder
-```sh
+After installing the package, test it with:
+```bash
 python3 ../bin/test.py
 ```
 
 ### Displaying package info
-Informations are gather from the pyproject.toml file.
-```sh
+```bash
 pip3 show pyalgo
 ```
 
-See [this link](https://pybind11.readthedocs.io/en/stable/compiling.html#modules-with-cmake) and [this link](https://scikit-build-core.readthedocs.io/en/latest/) for more informations.
+### Manual packaging (alternative)
+If you need more control, you can still perform the packaging steps manually:
+
+#### Creating the wheel only
+```bash
+pip3 wheel .
+```
+
+#### Installing a specific wheel
+```bash
+pip3 install YOUR-WHEEL-FILENAME.whl --force-reinstall
+```
