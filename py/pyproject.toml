@@ -13,7 +13,14 @@ description = "C++ binding in Python using scikit-build-core"
 [tool.scikit-build]
 cmake.minimum-version = "3.16"
 cmake.args = ["-DCMAKE_PREFIX_PATH={pythonLocation}"]
-
-sdist.include = ["../bin/libalgo.dylib", "../bin/pyalgo.so"]
-
 wheel.packages = ["src"]
+
+#sdist.include = ["../bin/libalgo.dylib", "../bin/pyalgo.so"]
+
+# Define data that should be included in the sdist
+[tool.scikit-build.sdist]
+include = ["../bin/libalgo.dylib", "../bin/pyalgo.so"]
+
+# Define where to find the pybind11 code
+[tool.scikit-build.cmake.define]
+PYBIND11_ROOT = "pybind11"

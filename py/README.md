@@ -8,6 +8,11 @@ This guide explains how to use the new Python-based setup process for the pyalgo
 - Git
 - CMake
 
+### Installation
+```bash
+pip install scikit-build-core pybind11 wheel
+```
+
 ## Usage
 
 The `setup.py` script replaces the previous npm/yarn-based workflow. Make sure the script is executable:
@@ -68,6 +73,8 @@ You can create and install the wheel package all at once with:
 
 ```bash
 ./setup.py package
+cd py
+pip wheel .
 ```
 
 This will:
